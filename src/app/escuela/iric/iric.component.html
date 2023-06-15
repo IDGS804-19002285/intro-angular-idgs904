@@ -1,0 +1,57 @@
+<p>iric works!</p>
+
+
+<div class="card">
+    <div class="card-header">
+        Alumnos IRIC
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-2">Filtrar por:</div>
+            <div class="col-md-4">
+                <input [(ngModel)]="listenFilter" class="form-control" name="filter" type="text">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <h3>Filtro:{{listenFilter}}</h3>
+            </div>
+        </div>
+        <div class="table-responsive">
+            <table class="table" *ngIf="alumnosIric.length">
+                <thead>
+                    <tr>
+                        <th><button (click)="showImagen()" class="btn btn-primary" >
+                            {{muestraImg?'oculta':'muestra '}} Imagen</button></th>
+                        <th>Foto</th>
+                        <th>Matricula</th>
+                        <th>Nombre</th>
+                        <th>Edad</th>
+                        <th>Correo</th>
+                        <th>Pago</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr *ngFor="let alumno of alumnosIric">
+                    <td><img [src]="alumno.foto" alt="ALT"
+                        *ngIf="muestraImg"
+                    [title]="alumno.nombre"
+                    [style.width.px]="imageWidth"
+                    [style.margin.px]="imageMargin"></td>
+                    
+                    
+            
+                        <td>{{alumno.foto}}</td>
+                        <td>{{alumno.matricula}}</td>
+                        <td>{{alumno.nombre}}</td>
+                        <td>{{alumno.edad}}</td>
+                        <td>{{alumno.correo}}</td>
+                        <td>{{alumno.pago}}</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+        </div>
+    </div>
+</div>
