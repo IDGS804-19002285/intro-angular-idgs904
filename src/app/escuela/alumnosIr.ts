@@ -5,5 +5,6 @@ export interface IAlumnos{
     "edad":number;
     "correo":string;
     "pago":number;
-    "foto":string
+    "foto":string;
+    "calif":number;
 }

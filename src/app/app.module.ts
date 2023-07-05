@@ -5,10 +5,15 @@ import { AppComponent } from './app.component';
 import { escuelaComponent, trabajo } from './escuela/escuela.component';
 import { IricComponent } from './escuela/iric/iric.component';
 import { MenuComponent } from './escuela/menu/menu.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SumarComponent } from './escuela/formularios/sumar/sumar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { OperasbasComponent} from './escuela/formularios/operasbas/operasbas.component';
+import { OperasModule } from './escuela/formularios/operas/operas.module';
+import { AlumnosFilterPipe } from './escuela/alumnos-filter.pipe';
+import { CalificacionAlumComponent } from './escuela/calificacion-alum/calificacion-alum.component';
+import { AlumnoReactiveComponent } from './formularios/alumno-reactive/alumno-reactive.component';
+import { AppRoutingModule } from './app.routing.module';
 
 @NgModule({
   declarations: [
@@ -18,12 +23,17 @@ import { OperasbasComponent} from './escuela/formularios/operasbas/operasbas.com
     trabajo,
     MenuComponent,
     SumarComponent,
-    OperasbasComponent
+    AlumnosFilterPipe,
+    CalificacionAlumComponent,
+    AlumnoReactiveComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    OperasModule,
+    ReactiveFormsModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

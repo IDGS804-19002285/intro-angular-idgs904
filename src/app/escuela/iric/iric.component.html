@@ -9,36 +9,38 @@
         <div class="row">
             <div class="col-md-2">Filtrar por:</div>
             <div class="col-md-4">
-                <input [(ngModel)]="listenFilter" class="form-control" name="filter" type="text">
+                <input [(ngModel)]="listFilter" class="form-control" name="filter" type="text">
             </div>
         </div>
         <div class="row">
             <div class="col-md-6">
-                <h3>Filtro:{{listenFilter}}</h3>
+                <h3>Filtro:{{listFilter}}</h3>
             </div>
         </div>
+        <button (click)="showImagen()" class="btn btn-primary" >
+            {{muestraImg?'oculta':'muestra '}} Imagen</button>
         <div class="table-responsive">
             <table class="table" *ngIf="alumnosIric.length">
                 <thead>
+                    
                     <tr>
-                        <th><button (click)="showImagen()" class="btn btn-primary" >
-                            {{muestraImg?'oculta':'muestra '}} Imagen</button></th>
                         <th>Foto</th>
                         <th>Matricula</th>
                         <th>Nombre</th>
                         <th>Edad</th>
                         <th>Correo</th>
                         <th>Pago</th>
+                        <th>Calificacion </th>
                     </tr>
                 </thead>
 
                 <tbody>
-                    <tr *ngFor="let alumno of alumnosIric">
-                    <td><img [src]="alumno.foto" alt="ALT"
+                    <tr *ngFor="let alumno of alumnosIric | alumnosFilter:listFilter">
+                    <img [src]="alumno.foto" alt="ALT"
                         *ngIf="muestraImg"
                     [title]="alumno.nombre"
                     [style.width.px]="imageWidth"
-                    [style.margin.px]="imageMargin"></td>
+                    [style.margin.px]="imageMargin">
                     
                     
             
@@ -48,6 +50,10 @@
                         <td>{{alumno.edad}}</td>
                         <td>{{alumno.correo}}</td>
                         <td>{{alumno.pago}}</td>
+                        <td>{{alumno.calif}}</td>
+                        <td><app-calificacion-alum (calificaClick)="onCalificaClick($event)"
+                            [califica]="alumno.calif">
+                        </app-calificacion-alum></td>
                     </tr>
                 </tbody>
             </table>
